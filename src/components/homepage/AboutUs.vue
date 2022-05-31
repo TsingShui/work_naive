@@ -2,7 +2,7 @@
     <n-grid :x-gap="10" :y-gap="0" :cols="1">
         <n-grid-item>
             <div class="Title1">
-                <n-gradient-text type="primary">这里是 AFX0 </n-gradient-text>
+                <n-gradient-text type="primary">这里是 AFX0 Team </n-gradient-text>
             </div>
         </n-grid-item>
         <n-grid-item>

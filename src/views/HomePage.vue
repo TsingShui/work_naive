@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Background from '../components/homepage/background.vue';
+import Background from '../components/homepage/Background.vue';
 </script>
 
 

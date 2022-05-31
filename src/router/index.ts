@@ -3,6 +3,7 @@ import HomePage from '@/views/HomePage.vue'
 import Content from '@/components/homepage/Content.vue'
 import AboutUs from '@/components/homepage/AboutUs.vue'
 import Login from '@/components/login/Login.vue'
+import PlaygroundVue from '@/views/Playground.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -24,6 +25,11 @@ const router = createRouter({
     {
       path: '/login',
       component: Login
+    }
+    ,
+    {
+      path: '/playground',
+      component: PlaygroundVue
     }
   ]
 })
