@@ -7,10 +7,9 @@ const props = defineProps({
 </script>
 
 <template>
-<n-layout content-style="padding: 24px;" :native-scrollbar='false'>
-    <BlogPost :key="props.posts?.id" v-for="post in props.posts" :post="post" />
-</n-layout>
-
+    <n-layout content-style="padding: 24px;" :native-scrollbar='false'>
+        <BlogPost v-for="post in props.posts" :key="post.id" :post="post" />
+    </n-layout>
 </template>
 
 <style>

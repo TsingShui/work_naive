@@ -8,9 +8,10 @@ import 'vfonts/FiraCode.css'
 import naive from 'naive-ui'
 import LoadScript from "vue-plugin-load-script"
 
-const app = createApp(App)
 
+const app = createApp(App)
 app.use(router)
 app.use(naive)
 app.use(LoadScript)
+
 app.mount('#app')

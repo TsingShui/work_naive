@@ -28,12 +28,13 @@ export default {
             mouseControls: true,
             touchControls: true,
             gyroControls: false,
-            minHeight: 200,
-            minWidth: 200,
-            scale: 1,
-            scaleMobile: 1,
-            backgroundColor: 0,
-            color: 3674267
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            backgroundColor: 0xffffff,
+            color: 0xa4ff,
+            backgroundAlpha: 0.00
         });
     },
     beforeDestroy() {
@@ -41,7 +42,7 @@ export default {
             this.vantaEffect.destroy();
         }
     },
-    components: { Content, Navbar,RouterView }
+    components: { Content, Navbar, RouterView }
 }
 </script>
 
@@ -51,9 +52,10 @@ export default {
 .background {
     height: 100vh;
 }
+
 /* 设置透明 */
-.n-layout,.n-layout-header{
+.n-layout,
+.n-layout-header {
     background-color: transparent;
 }
-
 </style>

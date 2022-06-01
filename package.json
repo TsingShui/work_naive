@@ -8,6 +8,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "md-editor-v3": "^2.0.1",
     "three": "^0.140.2",
     "vanta": "^0.5.22",
     "vue": "^3.2.33",
