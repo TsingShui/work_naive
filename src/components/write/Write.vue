@@ -17,7 +17,7 @@ const text = ref('# 开始创作吧!🥰🥰🥰');
 <style>
 .md{
   height: 100%;
-  width: 130%;
+  /*width: 130%;*/
 }
 
 </style>

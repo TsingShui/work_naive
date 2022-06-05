@@ -2,14 +2,11 @@
 import { RouterView } from 'vue-router'
 import { ref } from "vue";
 const token = ref("test");
-
-
-
 </script>
 
 <template>
 
-  <RouterView></RouterView>
+  <RouterView ></RouterView>
 </template>
 
 <style>

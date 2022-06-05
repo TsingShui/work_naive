@@ -7,23 +7,14 @@
 
     <!--密碼-->
     <n-form-item path="password" label="密码😎">
-      <n-input
-          v-model:value="model.password"
-          type="password"
-          @keydown.enter.prevent
-      />
+      <n-input v-model:value="model.password" type="password" @keydown.enter.prevent />
     </n-form-item>
-<!--    登录按钮 -->
+    <!--    登录按钮 -->
 
     <n-row :gutter="[0, 24]">
       <n-col :span="24">
         <div style="display: flex; justify-content: flex-end">
-          <n-button
-              :disabled="model.user_name === null"
-              round
-              type="primary"
-              @click="handleValidateButtonClick"
-          >
+          <n-button :disabled="model.user_name === null" round type="primary" @click="handleValidateButtonClick">
             登录
           </n-button>
         </div>
@@ -34,13 +25,13 @@
 
   </n-form>
   <!--预览Json-->
-  <pre>{{ JSON.stringify(model, null, 2) }}
-</pre>
+  <!--  <pre>{{ JSON.stringify(model, null, 2) }}-->
+  <!--</pre>-->
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import type{
+import type {
   FormInst,
   FormItemInst,
   FormItemRule,
@@ -49,14 +40,27 @@ import type{
 import {
   useMessage
 } from 'naive-ui'
+import axios from 'axios'
+import { useRouter } from 'vue-router'
 // 表单类型
 interface ModelType {
   user_name: string | null
   password: string | null
 }
 
+
+
+
 export default defineComponent({
-  setup () {
+  setup() {
+    // axios 请求封装
+    const login = axios.create({
+      baseURL: 'http://localhost:8000',
+      timeout: 1000 * 10,
+      headers: { 'auth': localStorage.token }
+    })
+    const router = useRouter()
+
     // 表单引用
     const formRef = ref<FormInst | null>(null)
     // 重复密码
@@ -69,19 +73,21 @@ export default defineComponent({
       password: null,
     })
 
+    // 封装封路请求
+
     // 检查规则
     const rules: FormRules = {
       user_name: [
         {
           required: true,
-          validator (rule: FormItemRule, value: string) {
+          validator(rule: FormItemRule, value: string) {
             if (!value) {
               return new Error('用户名是必须的!它是唯一登录凭证')
             } else if (!/^[A-Za-z\d@_]+$/.test(value)) {
               return new Error('用户名只能包含英文字符,_,@和数字!')
-            } else if (value.length > 10){
+            } else if (value.length > 10) {
               return new Error('用户名怎么会这么长..?')
-            }else if (value.length < 2){
+            } else if (value.length < 2) {
               return new Error('用户名不会这么短...')
             }
             return true
@@ -92,16 +98,16 @@ export default defineComponent({
       password: [
         {
           required: true,
-          validator (rule:FormItemRule,value:string){
-            if (!value){
+          validator(rule: FormItemRule, value: string) {
+            if (!value) {
               return new Error('输入密码哦')
             }
-            else if (value.length < 5){
+            else if (value.length < 5) {
               return new Error('密码不会这么短!')
             }
             return true
           },
-          trigger:['input','blur'],
+          trigger: ['input', 'blur'],
           // message: '请输入密码'
         }
       ],
@@ -113,21 +119,43 @@ export default defineComponent({
         }
       ]
     }
+
+    // 暴露接口
     return {
       formRef,
       rPasswordFormItemRef,
       model: modelRef,
       rules,
-
-      handleValidateButtonClick (e: MouseEvent) {
+      handleValidateButtonClick(e: MouseEvent) {
         e.preventDefault()
         formRef.value?.validate((errors) => {
           if (!errors) {
+            login.post(
+              '/user/sign_in',
+              {
+                'user_name': modelRef.value.user_name,
+                'passwd': modelRef.value.password
+              }
+            ).then(
+              function get_token(response) {
+                localStorage.token = response.data.token
 
-            message.success('注册成功')
+                message.success('登录成功!')
+                setTimeout(
+                  () => router.push('/playground'),
+                  500
+                )
+              }
+            ).catch(
+              function (reason) {
+                console.log(reason)
+                message.error('登录失败咯!')
+              }
+            )
+            // message.success('登录成功')
           } else {
             console.log(errors)
-            message.error('注册失败')
+            message.error('登录失败')
           }
         })
       }

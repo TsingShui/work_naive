@@ -20,7 +20,7 @@ const menuOptions: MenuOption[] = [
                 RouterLink,
                 {
                     to: {
-                        path: '/home'
+                        path: '/playground'
                     }
                 },
             ),
@@ -37,7 +37,7 @@ const menuOptions: MenuOption[] = [
                     }
                 },
             ),
-        key: 'home',
+        key: 'write',
         icon: () => h(PencilIcon)
     }, {
         label: () =>
@@ -45,11 +45,11 @@ const menuOptions: MenuOption[] = [
                 RouterLink,
                 {
                     to: {
-                        path: '/home'
+                        path: '/playground'
                     }
                 },
             ),
-        key: 'home',
+        key: 'papers',
         icon: () => h(BookIcon)
     },
 
