@@ -1,13 +1,13 @@
 <template>
     <n-layout-header>
-        <n-grid x-gap="0" :cols="2">
+        <n-grid  :cols="2">
             <n-gi class="left-bar">
                 <n-menu v-model:value="activeKey" :options="menuOptions" mode="horizontal" />
             </n-gi>
             <n-gi class="right-bar">
-                <n-grid :x-gap="10" :y-gap="5" :cols="2">
-                    <n-grid-item>
-                        <n-button size="Large" text @click="">Login</n-button>
+                <n-grid :cols="1">
+                    <n-grid-item class="right-bar">
+                        <n-menu v-model:value="activeKey" :options="menuOptions_login" mode="horizontal" />
                     </n-grid-item>
                 </n-grid>
             </n-gi>
@@ -28,10 +28,10 @@ let menuOptions: MenuOption[] = [
                 RouterLink,
                 {
                     to: {
-                        path: '/home'
+                        path:'/home'
                     }
                 },
-                'Home'
+              ()=>h('p','Home')
             ),
         key: 'home'
     },
@@ -44,7 +44,7 @@ let menuOptions: MenuOption[] = [
                         path: '/about-us'
                     }
                 },
-                'AboutUS'
+                ()=>h('p','AboutUs')
             )
         , key: 'About'
     },
@@ -57,17 +57,35 @@ let menuOptions: MenuOption[] = [
                         path: '/playground'
                     }
                 },
-                'PlayGround'
+               ()=> h('p',"PlayGround")
             )
         , key: 'PlayGround'
     }
 
 ]
 
+let menuOptions_login: MenuOption[] = [
+    {
+        label: () =>
+            h(
+                RouterLink,
+                {
+                    to: {
+                        path: '/login'
+                    }
+                },
+              ()=>h('p','Login')
+            ),
+        key: 'Login'
+    },
+]
+
 export default defineComponent({
     setup() {
         //
-        return { menuOptions, activeKey: ref<string | null>(null), }
+        return {
+            menuOptions, activeKey: ref<string | null>(null),
+            menuOptions_login }
     }
 })
 </script>

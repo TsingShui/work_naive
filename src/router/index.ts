@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/views/HomePage.vue'
 import Content from '@/components/homepage/Content.vue'
 import AboutUs from '@/components/homepage/AboutUs.vue'
-import Login from '@/components/login/Login.vue'
+import Login from '@/components/homepage/Login.vue'
 import PlaygroundVue from '@/views/Playground.vue'
 import WriteViewVue from '@/views/WriteView.vue'
 const router = createRouter({
@@ -20,14 +20,14 @@ const router = createRouter({
           path: 'about-us',
           component:AboutUs
         },
-
+        {
+          path: '/login',
+          component: Login
+        }
+        ,
       ]
     },
-    {
-      path: '/login',
-      component: Login
-    }
-    ,
+
     {
       path: '/playground',
       component: PlaygroundVue,

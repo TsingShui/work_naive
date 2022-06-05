@@ -2,7 +2,7 @@
     <n-grid :x-gap="10" :y-gap="0" :cols="1">
         <n-grid-item>
             <div class="Title1">
-                <n-gradient-text type="primary">你好,旅鼠 </n-gradient-text>
+                <n-gradient-text type="primary">你好,旅客 </n-gradient-text>
             </div>
         </n-grid-item>
         <n-grid-item>
@@ -53,7 +53,7 @@ export default defineComponent({
 }
 
 .start-button {
-    margin-top: 0%;
+    margin-top: 0;
     margin-left: 10%;
 
 }

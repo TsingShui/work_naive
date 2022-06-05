@@ -5,7 +5,11 @@
                 <Navbar></Navbar>
             </n-layout-header>
             <n-layout-content class="content">
+              <n-notification-provider>
+                <n-message-provider>
                 <RouterView></RouterView>
+                </n-message-provider>
+              </n-notification-provider>
             </n-layout-content>
         </n-layout>
 

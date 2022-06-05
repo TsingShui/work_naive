@@ -6,12 +6,13 @@ import 'vfonts/Lato.css'
 import 'vfonts/FiraCode.css'
 // 全局引入
 import naive from 'naive-ui'
-import LoadScript from "vue-plugin-load-script"
+
+// localStorage.token=123
 
 
 const app = createApp(App)
+
 app.use(router)
 app.use(naive)
-app.use(LoadScript)
 
 app.mount('#app')
