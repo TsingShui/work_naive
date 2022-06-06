@@ -5,49 +5,27 @@ import axios from 'axios'
 import type {Post} from "@/components/TypeInterface";
 
 const service = axios.create({
-      baseURL: "http://localhost:8000",
+      baseURL: "http://localhost:8000/playground",
       timeout: 1000 * 10,
     }
 )
 
+
 const posts = ref<Post[]>([])
 
-// service.get("/post")
-//     .then((response) => {
-//       posts.value = response.data
-//     }).catch((e) => {
-// })
-posts.value?.push({
-  id: 1,
-  author: {
-    id: 1,
-    name: 'AAA',
-    avatar: 'aaa'
-  },
-  title: 'AAA',
-  content: 'aaa',
-  date: '2022-01-01',
-  tags: ['tag1', 'tag2']
-}, {
-  id: 1,
-  author: {
-    id: 1,
-    name: 'AAA',
-    avatar: 'aaa'
-  },
-  title: 'AAA',
-  content: 'aaa',
-  date: '2022-01-01',
-  tags: ['tag1', 'tag2']
+service.get("/papers")
+    .then((response) => {
+      posts.value = response.data
+    }).catch((e) => {
 })
 </script>
 
 <template>
   <n-layout content-style="padding: 24px;" :native-scrollbar='false'>
-        <BlogPost
-            v-for="post in posts"
-            :key="post.id"
-            :post="post"/>
+    <BlogPost
+        v-for="post in posts"
+        :key="post.id"
+        :post="post"/>
   </n-layout>
 </template>
 

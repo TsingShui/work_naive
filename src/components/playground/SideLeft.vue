@@ -33,7 +33,7 @@ const menuOptions: MenuOption[] = [
                 RouterLink,
                 {
                     to: {
-                        path: '/write'
+                        path: '/playground/write'
                     }
                 },
             ),

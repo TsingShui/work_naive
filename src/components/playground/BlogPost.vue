@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 
 import type {Post} from "@/components/TypeInterface";
-
 const props = defineProps({
-  post: Object as () => Post
+  post: Object as () => Post,
 })
+
 
 </script>
 
@@ -13,7 +13,7 @@ const props = defineProps({
   <n-space vertical>
     <!-- 博客顶部：头像 + 博主名字 + 发布日期(Mon Day, Year) -->
     <n-space>
-      <n-avatar round size="small" src="{{ post.author.avatar }}"/>
+      <n-avatar round size="small" v-bind:src='post.author.avatar' />
       <n-button text color="#000000">
         {{ post.author.name }}
       </n-button>

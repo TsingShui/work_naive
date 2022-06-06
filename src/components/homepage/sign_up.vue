@@ -53,7 +53,7 @@
       <n-col :span="24">
         <div style="display: flex; justify-content: flex-end">
           <n-button
-              :disabled="model.age === null"
+              :disabled="model.user_name === null"
               round
               type="primary"
               @click="handleValidateButtonClick"

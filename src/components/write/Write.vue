@@ -128,5 +128,9 @@ function publish_paper(){
 .md {
   height: 100%;
 }
+.md-toolbar-wrapper .md-toolbar{
+  border-bottom : transparent;
+}
+
 
 </style>
