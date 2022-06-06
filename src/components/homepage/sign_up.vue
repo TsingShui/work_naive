@@ -80,6 +80,8 @@ import type{
 import {
   useMessage
 } from 'naive-ui'
+import axios from 'axios'
+
 // 表单类型
 interface ModelType {
   user_name: string | null
@@ -97,6 +99,12 @@ export default defineComponent({
     const rPasswordFormItemRef = ref<FormItemInst | null>(null)
     // 提示信息
     const message = useMessage()
+    // axios 请求
+    const sign_up = axios.create({
+      baseURL:'http://localhost:8000',
+      timeout:1000*5,
+    })
+
     // model
     const modelRef = ref<ModelType>({
       user_name: null,

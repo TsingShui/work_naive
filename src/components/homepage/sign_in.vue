@@ -57,10 +57,8 @@ export default defineComponent({
     const login = axios.create({
       baseURL: 'http://localhost:8000',
       timeout: 1000 * 10,
-      headers: { 'auth': localStorage.token }
     })
     const router = useRouter()
-
     // 表单引用
     const formRef = ref<FormInst | null>(null)
     // 重复密码
@@ -73,7 +71,6 @@ export default defineComponent({
       password: null,
     })
 
-    // 封装封路请求
 
     // 检查规则
     const rules: FormRules = {
